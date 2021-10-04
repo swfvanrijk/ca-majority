@@ -16,7 +16,7 @@ ntsteps = 50                                                                    
 nic = 10                                                                        # number of initial conditions
 psize = 10                                                                      # size of a population
 ngenerations = 10                                                               # number of generations
-density = 0                                                                   # density of the majority of the initial condition
+density = 0.8                                                                   # density of the majority of the initial condition
 
 ##############################################################################
 #                      Methods and functions
@@ -306,79 +306,79 @@ def EvolveFurther(population):
 #                   Running the genetic algorithm
 ##############################################################################
 
-#lineage = Evolve()
+lineage = Evolve()
 
 ##############################################################################
 #                   Saving the data
 ##############################################################################
 
-#ts = time.time()
-#tijd = datetime.datetime.fromtimestamp(ts).strftime('%Y-%m-%d %H-%M-%S')
-#
-#text_file = open("Output "+tijd+".txt", "w")
-#text_file.write(str(lineage))
-#text_file.close()
+ts = time.time()
+tijd = datetime.datetime.fromtimestamp(ts).strftime('%Y-%m-%d %H-%M-%S')
+
+text_file = open("Output "+tijd+".txt", "w")
+text_file.write(str(lineage))
+text_file.close()
 
 ##############################################################################
 #                   Reading a dataset
 ##############################################################################
 
-file = open("lineage.txt", "r")
-lineage = file.readline()
-import re
-a=re.split(', | \[ | \]',lineage[1:-1])
+# file = open("lineage.txt", "r")
+# lineage = file.readline()
+# import re
+# a=re.split(', | \[ | \]',lineage[1:-1])
 
-for i in range(len(a)):
-    if i%2==0:
-        a[i]=a[i][1::]
-    else:
-        if i!=len(a)-1:
-            a[i]=a[i][:-1]
+# for i in range(len(a)):
+#     if i%2==0:
+#         a[i]=a[i][1::]
+#     else:
+#         if i!=len(a)-1:
+#             a[i]=a[i][:-1]
         
-for i in range(len(a)):
-    if i % 99 == 0:
-        a[i] = a[i][0:-2]
-    if i % 100 == 99:
-        if i!=len(a)-1:
-            a[i] = a[i][0:-1]
-    if i % 100 == 0:
-        a[i]=a[i][1:]
+# for i in range(len(a)):
+#     if i % 99 == 0:
+#         a[i] = a[i][0:-2]
+#     if i % 100 == 99:
+#         if i!=len(a)-1:
+#             a[i] = a[i][0:-1]
+#     if i % 100 == 0:
+#         a[i]=a[i][1:]
 
-for i in range(len(a)):
-    a[i] = float(a[i])
+# for i in range(len(a)):
+#     a[i] = float(a[i])
 
 
-fitness = []
-individuals = []
-for i in range(len(a)):
-    if (i + 1) % 2 == 0:
-        fitness.append(a[i])
-        individuals.append(a[i-1])
-fittest = []
-fittest_individuals = []
+# fitness = []
+# individuals = []
+# for i in range(len(a)):
+#     if (i + 1) % 2 == 0:
+#         fitness.append(a[i])
+#         individuals.append(a[i-1])
+# fittest = []
+# fittest_individuals = []
 
-for i in range(len(fitness)):
-    if (i+1)%50==0:
-        fittest.append(fitness[i])
-        fittest_individuals.append(individuals[i])
+# for i in range(len(fitness)):
+#     if (i+1)%50==0:
+#         fittest.append(fitness[i])
+#         fittest_individuals.append(individuals[i])
         
-fittest[0]=fitness[48] 
-print("Fitness over time: \n")      
-print(fittest)
-print("Fittest indivduals over the generations: \n")
-print(fittest_individuals)
+# fittest[0]=fitness[48] 
+# print("Fitness over time: \n")      
+# print(fittest)
+# print("Fittest indivduals over the generations: \n")
+# print(fittest_individuals)
 
 
-fit = np.polyfit(range(100),fittest,10)
-poly = np.poly1d(fit) 
-print(poly(90))
-gens = range(0,100)
-plt.scatter(gens,fittest,s=10)
-plt.plot(range(95),poly(range(95)),c='black')
-plt.ylim(0,1)
-plt.xlabel("Generation")
-plt.ylabel("Fitness (correct answer percentage)")
-plt.show()
+# fit = np.polyfit(range(100),fittest,10)
+# poly = np.poly1d(fit) 
+# print(poly(90))
+# gens = range(0,100)
+# plt.scatter(gens,fittest,s=10)
+# plt.plot(range(95),poly(range(95)),c='black')
+# plt.ylim(0,1)
+# plt.xlabel("Generation")
+# plt.ylabel("Fitness (correct answer percentage)")
+# plt.show()
 
 
 
@@ -387,12 +387,12 @@ plt.show()
 #                   Evolving a dataset further
 ##############################################################################
 
-a = a[-100:]
-b=[]
-for i in range(0,100,2):
-    b.append([a[i],a[i+1]])
-print("Last generation, with their results: \n")
-print(b)
+# a = a[-100:]
+# b=[]
+# for i in range(0,100,2):
+#     b.append([a[i],a[i+1]])
+# print("Last generation, with their results: \n")
+# print(b)
 
 #lineage = EvolveFurther(b)
 
@@ -400,19 +400,19 @@ print(b)
 #                   Analysing an individual
 ##############################################################################
 
-test = TestIndividual(DecimalToBinary(4219502720),True)
-print(test)
+# test = TestIndividual(DecimalToBinary(4219502720),True)
+# print(test)
 
 ##############################################################################
 #                   Saving the data
 ##############################################################################
 
-#ts = time.time()
-#tijd = datetime.datetime.fromtimestamp(ts).strftime('%Y-%m-%d %H-%M-%S')
-#
-#text_file = open("Output "+tijd+".txt", "w")
-#text_file.write(str(lineage))
-#text_file.close()
+ts = time.time()
+tijd = datetime.datetime.fromtimestamp(ts).strftime('%Y-%m-%d %H-%M-%S')
+
+text_file = open("Output "+tijd+".txt", "w")
+text_file.write(str(lineage))
+text_file.close()
     
 ##############################################################################
 #                   Getting the nextstate function of an individual
